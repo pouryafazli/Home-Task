@@ -23,7 +23,7 @@ To run the application and process fund loading operations based on an input fil
 
 - step 1
 ```maven
-mvn clean install
+./mvnw clean install
 ```
 - step 2
 ```bash
@@ -54,5 +54,5 @@ The `HomeTaskApplicationTests` class includes an integration test named `integra
 
 To run the tests, execute the following command:
 ```maven
-./mvnw -Dtest=HomeTaskApplicationTests# test
+./mvnw -Dtest=HomeTaskApplicationTests#integrationTest test
 ```

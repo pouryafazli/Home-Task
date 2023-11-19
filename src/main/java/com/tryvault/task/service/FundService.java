@@ -66,7 +66,7 @@ public class FundService {
             boolean isValid = (Objects.isNull(seenIds.get(newFund.getFundId().getCustomerId()))
                     || !seenIds.get(newFund.getFundId().getCustomerId()).contains(newFund.getFundId().getId()))
                     && validator.isValid(customerExistingFunds, newFund);
-            log.info("fund {} is {}", newFund.getFundId().getId(), isValid);
+            log.info("Fund ID {} validation status: {}", newFund.getFundId().getId(), isValid ? "Accepted" : "Rejected");
             responses.add(populateResponse(isValid, newFund));
             seenIds.computeIfAbsent(newFund.getFundId().getCustomerId(), k -> new HashSet<>()).add(newFund.getFundId().getId());
 
@@ -75,7 +75,10 @@ public class FundService {
                 newFunds.add(newFund);
             }
         });
+
+        log.info("{} funds are saving.", newFunds.size());
         fundRepository.saveAll(newFunds);
+        log.info("{} funds saved successfully.", newFunds.size());
         return responses;
     }
 
