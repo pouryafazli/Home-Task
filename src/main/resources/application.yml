@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: prod
+
+fund:
+  maxDailyLoadAmount: 5000
+  maxWeeklyLoadAmount: 20000
+  maxDailyLoad: 3
